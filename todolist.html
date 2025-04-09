@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium To-Do List</title>
+    <link rel="stylesheet" href="todo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="app-title">
+                <h1>Premium To-Do List</h1>
+                <button id="theme-toggle" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-text">Task Completion:</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="task-progress-bar"></div>
+                </div>
+                <div class="progress-percentage" id="progress-percentage">0%</div>
+            </div>
+        </header>
+
+        <main>
+            <div class="content-container">
+                <section class="todo-section">
+                    <h2>Tasks</h2>
+                    
+                    <form id="task-form">
+                        <div class="form-group">
+                            <input type="text" id="task-input" placeholder="Add a new task..." required>
+                            <button type="submit" id="add-task-btn" title="Add Task">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="task-details">
+                            <div class="form-group">
+                                <label for="task-priority">Priority:</label>
+                                <select id="task-priority">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="task-category">Category:</label>
+                                <select id="task-category">
+                                    <option value="Work">Work</option>
+                                    <option value="Personal" selected>Personal</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Custom">Custom</option>
+                                </select>
+                                <input type="text" id="custom-category" placeholder="Custom category" class="hidden">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="task-due-date">Due Date:</label>
+                                <input type="datetime-local" id="task-due-date">
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="edit-task-id" value="">
+                        <button type="button" id="cancel-edit-btn" class="hidden">Cancel Edit</button>
+                    </form>
+
+                    <div class="task-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="active">Active</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+
+                    <div class="motivational-message" id="motivational-message"></div>
+                    
+                    <ul id="task-list"></ul>
+                </section>
+
+                <section class="food-plan-section">
+                    <h2>Food Plan Suggestions</h2>
+                    
+                    <div class="food-preferences">
+                        <label>Dietary Preference:</label>
+                        <div class="preference-options">
+                            <button class="preference-btn active" data-preference="all">All</button>
+                            <button class="preference-btn" data-preference="veg">Vegetarian</button>
+                            <button class="preference-btn" data-preference="non-veg">Non-Vegetarian</button>
+                            <button class="preference-btn" data-preference="hostel">Hostel-friendly</button>
+                        </div>
+                    </div>
+                    
+                    <div class="food-suggestions" id="food-suggestions">
+                        <div class="current-meal">
+                            <h3 id="current-meal-time">Loading suggestions...</h3>
+                            <div class="suggestion-cards" id="suggestion-cards"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="custom-reminder">
+                        <h3>Custom Food Reminder</h3>
+                        <form id="food-reminder-form">
+                            <input type="text" id="food-reminder-input" placeholder="Add a food reminder...">
+                            <input type="time" id="food-reminder-time">
+                            <button type="submit">Add Reminder</button>
+                        </form>
+                        <ul id="food-reminder-list"></ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <div class="import-export">
+                <button id="export-btn" title="Export Tasks"><i class="fas fa-file-export"></i> Export</button>
+                <label for="import-input" class="import-label" title="Import Tasks"><i class="fas fa-file-import"></i> Import</label>
+                <input type="file" id="import-input" accept=".json" hidden>
+            </div>
+            <p>&copy; 2025 Premium To-Do List</p>
+        </footer>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+    <div class="notification-container" id="notification-container"></div>
+
+    <script src="todo.js"></script>
+</body>
+</html>
